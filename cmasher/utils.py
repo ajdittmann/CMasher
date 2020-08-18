@@ -888,4 +888,7 @@ def take_cmap_colors(cmap, N, cmap_range=(0, 1), return_hex=False):
 
 # %% IMPORT SCRIPT
 # Import all colormaps defined in './colormaps'
-import_cmaps(path.join(path.dirname(__file__), 'colormaps'))
+dirs = path.join(path.dirname(__file__), 'colormaps')
+dirs2 = path.join(path.dirname(__file__), 'colormaps/ajdcmaps')
+import_cmaps(dirs)
+import_cmaps(dirs2)
