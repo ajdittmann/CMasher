@@ -9,10 +9,13 @@ __all__ = ['cmap']
 # Author declaration
 __author__ = "Ellert van der Velden (@1313e)"
 
+# Package declaration
+__package__ = 'cmasher'
+
 
 # %% GLOBALS AND DEFINITIONS
-# Type of this colormap (according to viscm)
-cm_type = "linear"
+# Type of this colormap
+cm_type = 'sequential'
 
 # RGB-values of this colormap
 cm_data = [[0.11036298, 0.00169078, 0.25302591],
@@ -273,7 +276,7 @@ cm_data = [[0.11036298, 0.00169078, 0.25302591],
            [1.00000000, 1.00000000, 1.00000000]]
 
 # Create ListedColormap object for this colormap
-cmap = ListedColormap(cm_data, name="cmr.ocean", N=len(cm_data))
+cmap = ListedColormap(cm_data, name='cmr.ocean', N=len(cm_data))
 cmap_r = cmap.reversed()
 
 # Register (reversed) cmap in MPL

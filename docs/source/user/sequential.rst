@@ -25,10 +25,13 @@ These colormaps are shown in an overview and described individually below.
     sequential/amber
     sequential/apple
     sequential/arctic
+    sequential/bubblegum
     sequential/chroma
+    sequential/cosmic
     sequential/dusk
     sequential/eclipse
     sequential/ember
+    sequential/fall
     sequential/flamingo
     sequential/freeze
     sequential/gem
@@ -37,10 +40,18 @@ These colormaps are shown in an overview and described individually below.
     sequential/horizon
     sequential/jungle
     sequential/lavender
+    sequential/lilac
+    sequential/neon
     sequential/neutral
     sequential/nuclear
     sequential/ocean
+    sequential/pepper
     sequential/rainforest
     sequential/savanna
+    sequential/sepia
     sequential/sunburst
+    sequential/swamp
+    sequential/toxic
+    sequential/tree
+    sequential/tropical
     sequential/voltage

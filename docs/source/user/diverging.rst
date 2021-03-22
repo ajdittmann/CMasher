@@ -23,8 +23,13 @@ Therefore, a few alternatives are introduced here, with a full overview being sh
     :caption: Individual colormaps
 
     diverging/fusion
+    diverging/guppy
     diverging/iceburn
     diverging/pride
     diverging/redshift
+    diverging/seasons
+    diverging/seaweed
     diverging/viola
     diverging/waterlily
+    diverging/watermelon
+    diverging/wildfire

@@ -22,7 +22,7 @@ sys.path.insert(0, os.path.abspath('../..'))
 # -- Project information -----------------------------------------------------
 
 project = 'CMasher'
-copyright = '2019-2020, Ellert van der Velden'
+copyright = '2019-2021, Ellert van der Velden'
 author = 'Ellert van der Velden'
 
 # The short X.Y version
@@ -39,7 +39,7 @@ version = re.search(r"^_*version_* = ['\"]([^'\"]*)['\"]", vf, re.M).group(1)
 
 # If your documentation needs a minimal Sphinx version, state it here.
 #
-needs_sphinx = '1.8'
+needs_sphinx = '3.2'
 
 # Add any Sphinx extension module names here, as strings. They can be
 # extensions coming with Sphinx (named 'sphinx.ext.*') or your custom

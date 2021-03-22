@@ -4,12 +4,13 @@ Introduction
 ============
 Description
 -----------
-The *CMasher* package provides a collection of scientific colormaps to be used by different *Python* packages and projects, mainly in combination with `matplotlib`_ (see `here <https://matplotlib.org/3.1.0/tutorials/colors/colormaps.html>`_ for an overview of all their colormaps as of v3.1.0).
+The *CMasher* package provides a collection of scientific colormaps and utility functions to be used by different *Python* packages and projects, mainly in combination with `matplotlib`_ (see `here <https://matplotlib.org/3.1.0/tutorials/colors/colormaps.html>`_ for an overview of all their colormaps as of v3.1.0).
 The colormaps in *CMasher* are all designed to be perceptually uniform sequential using the `viscm`_ package; most of them are color-vision deficiency (CVD; color blindness) friendly; and they cover a wide range of different color combinations to accommodate for most applications.
 It offers several alternatives to commonly used colormaps, like :ref:`chroma` and :ref:`rainforest` for *jet*; :ref:`sunburst` for *hot*; :ref:`neutral` for *binary*; and :ref:`fusion` and :ref:`redshift` for *coolwarm*.
 If you cannot find your ideal colormap, then please open an `issue`_, provide the colors and/or style you want, and I will try to create one to your liking!
 
 *If you use CMasher for your work, then please star the repo, such that I can keep track of how many users it has and more easily raise awareness of bad colormaps.*
+*Additionally, if you use CMasher as part of your workflow in a scientific publication, please consider citing the CMasher paper* (*BibTeX:* :func:`~cmasher.get_bibtex`).
 
 Colormap overview
 -----------------
@@ -19,22 +20,35 @@ Below is an overview of all the colormaps that are currently in *CMasher* (made 
     :width: 100%
     :align: center
     :alt: Overview of all colormaps in *CMasher* for Python.
+    :name: cmr_cmaps
 
     Overview of all colormaps in *CMasher*.
 
+In :numref:`cmr_cmaps`, one can see this wide range of color combinations that *CMasher* has to offer, as I wanted to make sure that *CMasher* has a colormap for everyone.
+Because of this, *CMasher*'s sequential colormaps range from single major color maps like :ref:`amber`; :ref:`ember`; :ref:`flamingo`; :ref:`freeze`; :ref:`gothic`; and :ref:`jungle`, to colormaps with high perceptual ranges like :ref:`apple`; :ref:`chroma`; :ref:`heat`; :ref:`neon`; and :ref:`rainforest`.
+The diverging colormaps in *CMasher* have a similar variety, but more importantly, several of them have a black center instead of a white center, like :ref:`iceburn`; :ref:`redshift`; :ref:`watermelon`; and :ref:`wildfire`.
+Black centered diverging colormaps are quite rare as most researchers are used to white centered ones, even though a black centered diverging colormap can be rather useful in certain cases, like plotting a radial velocity map (the further away from the common center, the higher the velocity in either direction, and thus the corresponding color should be brighter).
+
 How to install
 --------------
-*CMasher* can be easily installed by either cloning the `repository`_ and installing it manually::
+*CMasher* can be easily installed directly from `PyPI`_ with::
+
+    $ pip install cmasher
+
+or from `conda-forge`_ with::
+
+    $ conda install -c conda-forge cmasher  # If conda-forge is not set up as a channel
+    $ conda install cmasher                 # If conda-forge is set up as a channel
+
+If required, one can also clone the `repository`_ and install *CMasher* manually::
 
     $ git clone https://github.com/1313e/CMasher
     $ cd CMasher
     $ pip install .
 
-or by installing it directly from `PyPI`_ with::
-
-    $ pip install cmasher
-
 *CMasher* can now be imported as a package with :pycode:`import cmasher as cmr`.
+
+.. _example_use:
 
 Example use
 -----------
@@ -62,27 +76,13 @@ So, for example, if one were to use the :ref:`rainforest` colormap, this could b
     plt.scatter(x, y, c=z, cmap=cmap, s=300)
     plt.show()
 
-If one instead wishes to use a specific *CMasher* colormap without adding dependencies (useful for, e.g., handing in tutorial assignments; quickly sharing work/results with someone; etc.), then one can find stand-alone versions of all colormaps, named ``<cmap_name>/<cmap_name>.py``, in the `cmasher/colormaps`_ directory.
-These Python modules can be placed in a local working directory, and can then be imported with :pycode:`import <cmap_name>` (e.g., :pycode:`import rainforest` to register the :ref:`rainforest` colormap in *matplotlib* as ``'cmr.rainforest'``).
-
-Accessing the colormaps in other languages than *Python* would require reading in the ``<cmap_name>/<cmap_name>_8bit.txt`` text files in the `cmasher/colormaps`_ directory, which contain the 8-bit RGB values of every colormap, and registering them in the appropriate package in the language manually.
-For those that are interested, the *viscm* source files that were used for creating the colormaps can also be found in the `cmasher/colormaps`_ directory in the repo (the source files are not provided with the package distribution).
-Note that my modified version of *viscm* (available `here <https://github.com/1313e/viscm>`_) is required in order to properly view and edit the source file of a diverging colormap.
-
-Using custom colormaps
-----------------------
-*CMasher* allows for custom colormaps to be imported with the :func:`~cmasher.import_cmaps` function (which is executed automatically on the `cmasher/colormaps`_ directory when *CMasher* is imported).
-This function takes the path to a colormap file named ``cm_<cmap_name>`` (or the path to a directory containing such files); creates a :obj:`~matplotlib.colors.ListedColormap` object using the data in the file; and registers it in *matplotlib* with the name ``'cmr.<cmap_name>'`` (it will also be available in *CMasher* as :pycode:`cmr.cm.<cmap_name>`).
-A colormap file can either be a JSCM-file as created by *viscm* or a text file that contains the (normalized) RGB values of the colormap (see the text files in the `cmasher/colormaps`_ directory for the structure of such files).
-If one wishes to register a colormap using (normalized) RGB values that are already in memory, the :func:`~cmasher.register_cmap` function can be used for this.
-
-Note that colormaps imported/registered this way cannot be accessed through *CMasher* using :pycode:`cmr.<cmap_name>`, unlike *CMasher*'s own colormaps, but solely using :pycode:`cmr.cm.<cmap_name>` (access through *matplotlib* is the same as before).
-This is to keep official and unofficial colormaps separated in *CMasher*.
+See :ref:`usage` for more use-cases, including an overview of *CMasher*'s utility functions and how to use *CMasher* in other programming languages.
 
 
 .. _viscm: https://github.com/matplotlib/viscm
 .. _repository: https://github.com/1313e/CMasher
 .. _PyPI: https://pypi.org/project/CMasher
+.. _conda-forge: https://anaconda.org/conda-forge/CMasher
 .. _matplotlib: https://github.com/matplotlib/matplotlib
 .. _issue: https://github.com/1313e/CMasher/issues
 .. _cmasher/colormaps: https://github.com/1313e/CMasher/tree/master/cmasher/colormaps
